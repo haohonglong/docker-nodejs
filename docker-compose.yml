@@ -1,0 +1,25 @@
+version: '2'
+services:
+  node:
+    image: haohonglong/node:1.0
+    container_name: node
+    build:
+        context: .
+        args:
+          - NODE_VER=12.14.1
+    ports:
+      - 4200:4200
+      - 9527:9527
+      - 9528:9528
+      - 3030:3000
+    volumes:
+      - ./www:/www
+    working_dir: /www
+    command: top
+    networks:
+      - public
+    tty: true
+
+networks:
+  public:
+    driver: bridge
